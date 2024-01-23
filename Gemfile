@@ -15,7 +15,6 @@ gem "jbuilder"
 gem "kramdown"
 gem "paper_trail"
 gem 'pg'
-gem 'poppler'
 gem 'pdfjs_viewer-rails'
 gem "puma", "~> 5.0"
 gem "pundit", "~> 2.3"
