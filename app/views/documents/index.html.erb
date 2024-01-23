@@ -1,0 +1,18 @@
+<div class="flex items-center justify-between px-4 sm:px-6 lg:px-0">
+  <h1 class="text-2xl font-bold tracking-tight text-gray-900">Your Documents</h1>
+  <%= link_to new_document_path, class: "hidden text-sm font-semibold text-blue-600 hover:text-cyan-500 sm:block" do %>
+    New Document
+    <span aria-hidden="true"> →</span>
+  <% end %>
+</div>
+<% if @documents.any? %>
+  <ul class="relative mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <% @documents.each do |document| %>
+        <li>
+      <%= render partial: 'document', locals: { document: document } %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No documents found.</p>
+<% end %>

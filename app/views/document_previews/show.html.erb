@@ -1,0 +1,14 @@
+<div>
+  <% case @document.document_type %>
+  <% when 'markdown', 'md' %>
+    <%= raw @html_content %>
+  <% when 'pdf' %>
+  <%= pdfjs_viewer pdf_url: @document.file.url, style: :full %>
+    <%= image_tag @document.file.preview(resize_to_limit: [100, 100]) %>
+  <% when 'jpg', 'jpeg', 'png' %>
+    <img src="<%= @document.file.url %>" alt="<%= @document.name %>">
+  <% else %>
+    <p>This file type is not supported for preview.</p>
+  <% end %>
+</div>
+

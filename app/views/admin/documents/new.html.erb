@@ -1,0 +1,42 @@
+<%= form_with(model: @document, url: admin_documents_path, method: :post, local: true) do |form| %>
+    <% if @document.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+        <ul>
+          <% @document.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="max-w-md mx-auto p-8 bg-white rounded-md shadow-md">
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 mb-4">New Document</h1>
+      <div class="mb-4">
+        <%= form.label :user_id, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+        <%= form.collection_select :user_id, @users, :id, :name, prompt: "Select user" %>
+      </div>
+
+      <div class="field mb-4">
+          <%= form.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+          <%= form.text_field :name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      </div>
+  
+      <div class="field mb-4">
+          <%= form.label :content, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+          <%= form.text_area :content, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      </div>
+  
+      <div class="field mb-4">
+          <%= form.label :file, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+          <%= form.file_field :file, class: "block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">MD, SVG, PNG, JPG, PDF or GIF </p>
+      </div>
+  
+      <div class="mt-3 actions hidden text-sm font-semibold text-blue-600 hover:text-cyan-500 sm:block">
+          <%= form.submit %>
+          <span aria-hidden="true"> →</span>
+      </div>
+    </div>
+  <% end %>
+  

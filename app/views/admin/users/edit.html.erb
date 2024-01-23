@@ -1,0 +1,37 @@
+
+<div class="p-6 ml-4">
+<h1 class="text-2xl font-semibold mb-4">Edit User</h1>
+
+<%= form_with(model: @user, url: admin_user_path(@user), method: :patch, local: true) do |form| %>
+  <div class="mb-4">
+    <%= form.label :email, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+    <%= form.text_field :email, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-b-md" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+    <%= form.text_field :name, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-b-md" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :status, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+    <%= form.select :status, %w[active inactive], { include_blank: 'Select Status' }, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-b-md" %>
+  </div>
+
+  <div class="mb-4">
+  <%= form.label :roles, class: "block text-gray-700 text-sm font-semibold mb-2" %>
+  <div>
+    <% Role.available_roles.each do |role| %>
+      <label class="inline-flex items-center mr-4">
+        <%= check_box_tag 'user[roles][]', role, @user.has_role?(role.to_sym), { multiple: true } %>
+        <span class="ml-2 text-gray-700"><%= role.to_s.capitalize %></span>
+      </label>
+    <% end %>
+  </div>
+</div>
+
+  <div class="flex items-center">
+    <%= form.submit "Update", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800" %>
+  </div>
+<% end %>
+</div>
