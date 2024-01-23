@@ -26,7 +26,6 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails", "~> 2.3"
 gem "turbo-rails"
-gem "vite_rails", "~> 3.0"
 gem "wicked_pdf"
 
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
