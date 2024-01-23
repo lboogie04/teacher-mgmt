@@ -15,7 +15,7 @@ npm install
 Create, migrate, and seed your database:
 
 ```
-rails db:create; rails db:migrate
+rails db:create; rails db:migrate; rails db:seed;
 ```
 
 Run rails server:

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.2"
+ruby "3.1.4"
 
 gem "audited" # Use for Record Auditing
 gem "bcrypt", "~> 3.1.7"
@@ -14,15 +14,16 @@ gem 'impressionist' # Page view tracker
 gem "jbuilder"
 gem "kramdown"
 gem "paper_trail"
+gem 'pg'
 gem 'poppler'
 gem 'pdfjs_viewer-rails'
 gem "puma", "~> 5.0"
+gem "pundit", "~> 2.3"
 gem 'rack-cors'
 gem "rails", "~> 7.0.8"
 gem "react_on_rails", '~> 13.4'
 gem "rolify"
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.4"
 gem "stimulus-rails"
 gem "tailwindcss-rails", "~> 2.3"
 gem "turbo-rails"
@@ -53,5 +54,3 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
 end
-
-gem "pundit", "~> 2.3"
