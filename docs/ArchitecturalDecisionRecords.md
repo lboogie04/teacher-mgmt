@@ -8,6 +8,9 @@ This section should encapsulate some of the major decisions made throughout the 
 ## Frontend Tooling
 There was a consideration to make use frontend bundling tools such as Vite to make use of React. As some of the basic CRUD functionalities began to be implemented, I found it unnecessary to add the increased setup complexity causing various process to run for the platform to run. Thus, I stuck with the basic ERB approach.
 
+## Active Storage
+I chose to use Active Storage as our file upload and attachment solution in the Rails application. Active Storage is part of the Rails framework and it provides a standardized approach to handling file uploads without the need for additional third-party gems. This native integration aligns with Rails conventions and simplifies the development process. It supports a variety of cloud storage services, such as Amazon S3 and Google Cloud Storage. Other gems like CarrierWave and Paperclip may offer a broader range of features. Systems with specific and advanced requirements may need to evaluate whether Active Storage fulfills all their needs. For this use case, the decision aligns with the framework's conventions and provides a reliable and maintainable solution for our current and future needs.
+
 ## Role Authorization Management
 Based on some of the project requirements, I wanted a fairly simplistic approach to scope and resource authorization and Pundit, provided a great out-of-the-box solution. Pundit encourages explicit authorization checks in controllers and views. Instead of relying on implicit checks within the views or controllers, you explicitly call the relevant Pundit policy methods. This allows for more transparent and readable code. And while it has not been fully fleshed out here in this MVP, enough of it's prowess tooling is in place to display it's flexibility, testability and scalability.
 

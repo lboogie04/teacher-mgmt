@@ -1,9 +1,9 @@
 <header class="bg-white">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
-        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-      </a>
+      <%= link_to root_path, class: '-m-1.5 p-1.5' do %>
+        <%= image_tag('https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600', class: 'h-8 w-auto', alt: '') %>
+      <% end %>
     </div>
     <div class="flex lg:hidden">
       <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -15,7 +15,7 @@
     </div>
     <% if current_user %>
     <div class="hidden lg:flex lg:gap-x-12">
-    <% if !current_user.has_role? :student %>
+    <% if !current_user.has_role?(:student) && !current_user.roles.empty? %>
       <%= link_to documents_path, class: "relative flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" do %>
         Documents
       <% end %>
@@ -39,7 +39,7 @@
       <% end %>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <% if current_user %>
-          <p>Welcome, <%= current_user.email %>! <%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
+          <p>Welcome, <%= current_user.name %>! <%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
         <% else %>
           <%= link_to 'Log in', new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
         <% end %>
