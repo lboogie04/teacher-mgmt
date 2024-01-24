@@ -1,5 +1,6 @@
 class DocumentPreviewsController < ApplicationController
   layout "document_preview"
+  before_action :authenticate_user!, except: [:show]
 
   def index
     @documents = Document.all
